@@ -1,0 +1,24 @@
+{% extends "main.html" %}
+{% load static %}
+
+
+{% block css%}
+<link rel="stylesheet" , href="{% static 'css/style.css'%}">
+{% endblock %}
+
+{% block concent%}
+ <div class="container mt-3">
+    <div class="row">
+        <div class="col-12">
+            <h1>LOGİN</h1>
+            <form method="POST" novalidate>
+                {% csrf_token %}
+                {% include 'partials/_form.html'%}
+            <button type="submit" class="btn btn-primary">LOGİN</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

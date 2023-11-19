@@ -1,0 +1,153 @@
+data = {
+    "kişisel-gelişim" : "sağlık",
+    "vücut-geliştirme" : "vücüt geliştirme",
+    "sağlık" :"sağlık"
+
+}
+
+db = {
+    'events' : [
+        {
+            "title" : "Kişisel Gelişim",
+            "description" : "Kişisel Gelişim Açıklama",
+            "imageUrl" : "https://www.atesosgb.com.tr/wp-content/uploads/2020/10/kurumsal-gelisim.jpg",
+            "slug" : "kişisel-gelişim",
+            "date": datetime.now(),
+            "isActive": True,
+            "isUpdated" : True,
+        },
+        {
+            "title": "Vücut Geliştirme",
+            "description": "Vücut Geliştirme Açıklama",
+            "imageUrl": "https://d.newsweek.com/en/full/1524142/cardio-workout.jpg",
+            "slug": "vücut-geliştirme",
+            "date": datetime.now(),
+            "isActive": True,
+            "isUpdated": True,
+        },
+        {
+            "title": "Sağlık",
+            "description": "Sağlık Açıklama",
+            "imageUrl": "https://www.diyetasistan.com/files/user_uploads/Hande6/elma_pektini_2.jpg",
+            "slug": "sağlık",
+            "date": datetime.now(),
+            "isActive": True,
+            "isUpdated": False,
+        }
+    ],
+    "categories": [
+        {"id" : 1 , "name" :"self implovement","slug": "kişisel-gelişim" },
+        {"id" : 2 , "name" :"fitness","slug": "vücut-geliştirme" },
+        {"id" : 3 , "name" :"healt","slug": "sağlık" },
+    ]
+
+
+}
+
+VALİD
+   """title = request.POST["title"]
+        description = request.POST["description"]
+        imageUrl = request.POST["imageUrl"]
+        slug = request.POST["slug"]
+        isHome = request.POST.get("isHome",False)
+        isActive = request.POST.get("isActive",False)
+        isUpdated = request.POST.get("isUpdated",False)
+
+        if isHome == "on":
+            isHome = True
+
+        if isUpdated == "on":
+            isUpdated = True
+
+        if isActive == "on":
+            isActive = True
+        print(title,description,imageUrl,date,slug,isActive,isHome,isUpdated)
+        event = events(title = title,description= description,imageUrl = imageUrl,date = datetime,slug=slug,isActive =isActive,isHome=isHome,isUpdated=isUpdated)
+        event.save()"""
+
+ """
+def eventstypeid(request, category_id):
+    try:
+        category_list = list(db.keys())
+        category_text = category_list[category_id - 1]
+
+        redirect_url = reverse("event_by_category", args=[category_text])
+        return HttpResponseRedirect(redirect_url)
+    except:
+        return HttpResponseNotFound(f"{category_id} NUMARASINDA ETKİNLİĞİMİZ BULUNMAMAKTADIR.") """
+EVENTBY CATEGORY
+
+    """
+    try:
+
+      category_text = data[category_name]
+        return render(request,'events.html',{
+            'category_name': category_name,
+            'category_text': category_text
+        })
+
+    except:
+       return HttpResponseNotFound(f"{category_name} türünde etkinliğimiz bulunmamaktadır") """
+
+
+FORMS
+"""class EventCreateForm(forms.Form):
+    title = forms.CharField(label="Etkinlik Adı:" ,
+                            required=True,
+                            error_messages={"required":"Lütfen etkinlik adı giriniz!"},
+                            widget=forms.TextInput(attrs={"class":"form-control"}))
+
+    description = forms.CharField(label="Açıklama :",
+                                   required=True,
+                                  error_messages={"required":"Lütfen açıklama giriniz!"},
+                                  widget=forms.Textarea(attrs={"class":"form-control"}))
+
+    imageUrl = forms.CharField(required=True,
+                               widget=forms.TextInput(attrs={"class": "form-control"}))
+
+    slug = forms.SlugField(required=True,
+                           widget=forms.TextInput(attrs={"class": "form-control"}))"""
+
+index viev
+   #for category in category_list:
+   #   redirect_url = reverse("event_by_category", args=[category])
+   #   list_item += f"<li><a href ='{redirect_url}'>{category}</a></li>"
+   # html = f"<h1>ETKİNLİKLER</h1><br><ul>{list_item}</ul>"""
+
+   USER CREATİON
+   """username = request.POST["username"]
+        email = request.POST["email"]
+        password = request.POST["password"]
+        repassword = request.POST["repassword"]
+
+        if password != repassword:
+            return render(request, 'user_register.html', {'error': "Parolalar Eşleşmiyor."})
+
+
+        if User.objects.filter(username=username).exists():
+            return render(request, 'user_register.html', {'error': "Kullanıcı Adı Kullanılıyor."})
+        else:
+            if User.objects.filter(email=email).exists():
+               return render(request,"user_register.html",{'error': "E-mail Kullanılıyor."})
+            else:
+               user = User.objects.create_user(username=username,email=email,password=password)
+               user.save()
+               return redirect("user_login")"""
+
+  HTML USER_REGİSTER
+   {% if error %}
+                <div class="alert alert-danger">
+                    {{ error }}
+                </div>
+                {% endif  %}
+                <label for="username" class="form-label">Username</label>
+                <input type="text" name="username" id="username" class="form-control" required>
+
+                <label for="email" class="form-label">E-Mail</label>
+                <input type="email" name="email" id="email" class="form-control" required>
+
+                <label for="password" class="form-label">Password</label>
+                <input type="text" name="password" id="password" class="form-control" required>
+
+                <label for="repassword" class="form-label">Re-Password</label>
+                <input type="text" name="repassword" id="repassword" class="form-control" required>

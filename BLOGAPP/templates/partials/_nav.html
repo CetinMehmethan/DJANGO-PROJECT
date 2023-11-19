@@ -1,0 +1,78 @@
+<link rel="stylesheet" href="../../static/css/style.css">
+<nav class="navbar navbar-expand-lg header-nav">
+    <div class="container ">
+    <a href="/" class="navbar-brand">BLOGAPP</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbar">
+        <ul class="navbar-nav me-auto nav-flex">
+            <li class="nav-item nav-icon">
+                <i class="fa-solid fa-star"></i>
+                <a href="/events" class="nav-link">EVENTS</a>
+            </li>
+
+            <li class="nav-item nav-icon">
+                <i class="fa-solid fa-building"></i>
+                <i class="fa-solid fa-phone"></i>
+                <a href="/hakkimizda" class="nav-link">ABOUT US</a>
+            </li>
+            {% if user.is_superuser %}
+            <li class="nav-item nav-icon me-0">
+                <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                <a href="/events/create-events" class="nav-link">EVENT EKLE</a>
+            </li>
+              <li class="nav-item nav-icon ">
+                <i class="fa-solid fa-recycle"></i>
+                <a href="/events/events-list" class="nav-link">EVENTS ARRANGEMENT</a>
+            </li>
+            {% endif %}
+            <form action="{% url 'search' %} ">
+                 <div class="input-group ">
+                 <input type="search" class="form-control rounded" placeholder="Anahtar Kelime" type="text" name="q" aria-label="Search" aria-describedby="search-addon" />
+                 <button type="submit" class="btn btn-outline-primary">search</button>
+                  </div>
+
+            </form>
+            {% if user.is_authenticated %}
+             </li>
+             <div style="padding-left: 15px"></div>
+              <li class="nav-item nav-icon me-0">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <a href="{% url 'user_logout' %}" class="nav-link">LOGOUT</a>
+            </li>
+
+            <li class="nav-item nav-icon me-0">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <a href="{% url 'change_password' %}" class="nav-link">PAROLA GÜNCELLE</a>
+            </li>
+            </li>
+              <li class="nav-item nav-icon me-0">
+                <a href="#" class="nav-link">Hoş geldin,{{user.username}}</a>
+            </li>
+
+
+            {% else %}
+            </li>
+            <div style="padding-left: 15px"></div>
+              <li class="nav-item nav-icon me-0">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                <a href="{% url 'user_login' %}" class="nav-link">LOGİN</a>
+            </li>
+
+            </li>
+              <li class="nav-item nav-icon me-0">
+               <i class="fa-regular fa-registered"></i>
+                <a href="{% url 'user_register' %}" class="nav-link">REGİSTER</a>
+            </li>
+            {% endif %}
+
+
+        </ul>
+
+         </div>
+
+      </div>
+
+</nav>

@@ -1,0 +1,72 @@
+{% extends "main.html" %}
+{% load static %}
+{% block concent %}
+
+<body id="bg" style="background-image: url('{% static 'img/bg.avif'%}')">
+
+    <meta charset="UTF-8">
+    <title>Ana Sayfa</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <div class="container mt-3 ">
+        <div class="jumbotron ">
+            <h1>Hoş Geldiniz!</h1>
+            <p class="lead">Blogapp projemize hoş geldiniz...Staj için Mehmethan Çetin tarafından hazırlanmıştır.</p>
+            <p class="lead">Events sayfasına gitmek için tıklayınız..</p>
+            <a class="btn btn-primary btn-lg" href="/events" role="button">Daha Fazla</a>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="{% static 'img/y.jpg' %}" class="card-img-top"  style=" max-height: 300px; height: 300px;">
+                    <div class="card-body">
+                        <h5 class="card-title">YAZILIM</h5>
+                        <p class="card-text">Etkinlikler için tıklayınız..</p>
+                        <a href="/events/category/yazilim" class="btn btn-primary">Detaylar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="{% static 'img/fitness.jpg' %}" class="card-img-top"  style=" max-height: 300px; height: 300px;">
+                    <div class="card-body">
+                        <h5 class="card-title">VÜCUT GELİŞTİRME</h5>
+                        <p class="card-text">Etkinlikler için tıklayınız..</p>
+                        <a href="/events/category/vucut-gelistirme" class="btn btn-primary">Detaylar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="/static/img/k.png" class="card-img-top "  style=" max-height: 300px; height: 300px;">
+                    <div class="card-body">
+                        <h5 class="card-title">KİŞİSEL GELİŞİM</h5>
+                        <p class="card-text">Etkinlikler için tıklayınız..</p>
+                        <a href="/events/category/kisisel-gelisim" class="btn btn-primary">Detaylar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS ve jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
+
+
+
+            </div>
+        </div>
+
+
+
+
+    </div>
+</div>
+
+ {% endblock %}

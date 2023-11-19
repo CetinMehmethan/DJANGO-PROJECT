@@ -1,0 +1,29 @@
+
+{%load static %}
+<div class="card mb-3">
+                <div class="row blog-container">
+                    <div class="col-5">
+                        <img  class="img-fluid rounded" src="{{ event.image.url }}" >
+                    </div>
+                    <div class="col-7">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                              <a href="{% url 'events_details' event.slug%}"
+                                   > {{ event.title|safe }}
+                                </a>
+                            </h5>
+                             <p>{{ event.subtitle}}</p>
+
+                            <p>
+                                    {% if event.isUpdated %}
+                                <span  class="badge bg-success"> Güncellendi</span>
+                                    {% else %}
+                                <span  class="badge bg-warning"> Güncellenmedi</span>
+                                    {% endif %}
+                            </p>
+
+                            <p> {{ event.date }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>

@@ -1,0 +1,28 @@
+{% extends "main.html" %}
+{% load static %}
+
+
+{% block css%}
+<link rel="stylesheet"  href="{% static 'css/style.css'%}">
+{% endblock %}
+
+{% block concent%}
+ <div class="container mt-3">
+    <div class="row">
+        <div class="col-12">
+          <form action="{% url 'upload_image' %}" method="post" ENCTYPE="multipart/form-data">
+           {% csrf_token %}
+              {{ form }}
+          <button class="btn btn-outline-secondary" type="submit" >YÜKLE</button>
+        </div>
+
+</div>
+
+
+
+            </form>
+        </div>
+    </div>
+ </div>
+
+{% endblock %}

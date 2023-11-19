@@ -1,0 +1,24 @@
+{% extends "main.html" %}
+{%load static %}
+
+
+{% block css%}
+<link rel="stylesheet" , href="{% static 'css/style.css'%}">
+{% endblock %}
+
+{% block concent%}
+ <div class="container mt-3">
+    <div class="row">
+        <div class="col-3 left-nav">
+              <img class="img-fluid rounded" src="{{ event1.image.url }}" >
+        </div>
+
+        <div class="col-9 right-main"><H1></H1>
+              <h1 class="h3"> {{ event1.title|safe }}</h1>
+              <p>{{ event.subtitle}}</p>
+              <p class="h5">{{ event1.description|safe }}</p>
+                </div>
+    </div>
+</div>
+
+ {% endblock %}

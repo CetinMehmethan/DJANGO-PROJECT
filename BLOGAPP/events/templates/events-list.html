@@ -1,0 +1,80 @@
+{% extends "main.html" %}
+{% load static %}
+
+
+{% block css%}
+<link rel="stylesheet"  href="{% static 'css/style.css'%}">
+{% endblock %}
+
+{% block concent%}
+ <div class="container mt-3">
+    <div class="row">
+        <div class="col-12">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col" style="width:20%">İMAGE</th>
+      <th scope="col">EVENT</th>
+      <th scope="col">AÇIKLAMA</th>
+      <th scope="col">SLUG</th>
+      <th scope="col">AKTİFLİK</th>
+      <th scope="col">GÜNCELLİK</th>
+      <th scope="col">ANASAYFA GÖRÜNÜRLÜĞÜ</th>
+      <th scope="col">EDİT</th>
+    </tr>
+  </thead>
+  <tbody>
+   {% for event in events%}
+   <tr>
+       <td >
+           <img src="{{ event.image.url }}" class="img-fluid">
+       </td>
+       <td>
+           {{event.title}}
+       </td>
+        <td>
+           {{event.description|truncatechars:10}}
+       </td>
+        <td>
+           {{event.slug}}
+       </td>
+        <td>
+           {% if event.isActive == True %}
+              Aktif
+            {% else %}
+              Aktif Değil
+            {% endif %}
+       </td>
+        <td>
+            {% if event.isUpdated == True %}
+              Güncel
+            {% else %}
+              Güncel Değil
+            {% endif %}
+       </td>
+        <td>
+
+            {% if event.isHome == True %}
+              Görünür
+            {% else %}
+              Görünür Değil
+            {% endif %}
+       </td>
+       <td>
+           <a href="{% url 'events_edit' event.id%}" class="btn btn-secondary">GÜNCELLE</a>
+           <a href="{% url 'events_delete' event.id%}" class="btn btn-danger">SİL</a>
+       </td>
+   </tr>
+
+   {% endfor %}
+
+  </tbody>
+</table>
+
+
+            </form>
+        </div>
+    </div>
+ </div>
+
+{% endblock %}

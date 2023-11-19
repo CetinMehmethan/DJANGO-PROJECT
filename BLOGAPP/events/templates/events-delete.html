@@ -1,0 +1,28 @@
+{% extends "main.html" %}
+{% load static %}
+
+
+{% block css%}
+<link rel="stylesheet"  href="{% static 'css/style.css'%}">
+{% endblock %}
+
+{% block concent%}
+ <div class="container mt-3">
+    <div class="row">
+        <div class="col-12">
+
+            <form method="POST" novalidate>
+                {% csrf_token %}
+               <p>
+                <strong>{{ event.title  }}</strong> isimli eventi silmek istedeğinizden emin misiniz?
+                <form action="{% url 'events_delete' event.id%}" method="POST">
+                <button TYPE="submit" CLASS="btn btn-danger">EVET</button>
+                <a href="{% url 'events_list' %}" CLASS="btn btn-primary">HAYIR</a>
+               </p>
+
+            </form>
+        </div>
+    </div>
+ </div>
+
+{% endblock %}
